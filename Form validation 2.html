@@ -1,0 +1,236 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <title>LIMITS</title>
+    <script>
+
+        function validateEmail(arg){
+            var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+            if (reg.test(arg.value) == false)
+            {
+                document.getElementById("email1").innerHTML= "Wrong Mail Id"+"<br>";
+                return false;
+            }
+
+            return true;
+
+        }
+
+
+
+        function leave()
+        {
+            document.getElementById("name1").innerHTML="";
+            document.getElementById("username1").innerHTML="";
+            document.getElementById("phonenumber1").innerHTML="";
+            document.getElementById("email1").innerHTML="";
+            document.getElementById("password1").innerHTML="";
+            document.getElementById("conpassword1").innerHTML="";
+
+        }
+
+
+        function myf(e)
+        {
+            var c=((e.which>=65 && e.which<91) || (e.which>=8 && e.which<=46) ||(e.which==8))
+            {
+
+            }
+            return c;
+        }
+
+        function phone(f)
+        {
+            var c=((f.which>=8 && f.which<57) || (f.which>=91 && f.which<=222) ||(f.which==8 || f.which==16))
+            {
+
+            }
+            return c;
+        }
+
+        function limit()
+        {
+            leave();
+            var name=document.getElementById("name").value;
+            var username=document.getElementById("username").value;
+            var phonenumber=document.getElementById("phonenumber").value;
+            var email=document.getElementById("email").value;
+            var password=document.getElementById("password").value;
+            var conpassword=document.getElementById("conpassword").value;
+
+
+            if(name=="")
+            {
+                document.getElementById("name1").innerHTML= "Don't leave it blank"+"<br>";
+                return wrong
+            }
+                        else if((name.length<3) || (name.length>20))
+                            {
+                                document.getElementById("name1").innerHTML="Name Should Be 2 to 20 words"+"<br>";
+                                return wrong
+                            }
+
+
+
+            if(username=="")
+            {
+                document.getElementById("username1").innerHTML= "Don't leave it blank"+"<br>";
+                return wrong
+            }
+
+                     if((username.length<3) || (username.length>8))
+                    {
+                        document.getElementById("username1").innerHTML="USERNAME Should Be 3 to 10 words"+"<br>";
+                        return wrong
+                    }
+
+
+
+            if(phonenumber=="")
+            {
+                document.getElementById("phonenumber1").innerHTML= "Don't leave it blank"+"<br>";
+                return wrong
+            }
+
+
+            else if(phonenumber.length!=10)
+            {
+                document.getElementById("phonenumber1").innerHTML="Enter full number"+"<br>";
+                return wrong
+            }
+
+            else if (!(phonenumber.charAt(0)=="9" || phonenumber.charAt(0)=="8"))
+            {
+                alert("Mobile No. should start with 9 or 8 ");
+                document.getElementById("phonenumber1").focus();
+                return false
+            }
+
+
+
+
+
+
+            if(email=="")
+            {
+                document.getElementById("email1").innerHTML= "Don't leave it blank"+"<br>";
+                return wrong;
+            }
+
+
+
+
+
+
+
+
+
+            if(password=="")
+            {
+                document.getElementById("password1").innerHTML= "Don't leave it blank"+"<br>";
+                return wrong;
+            }
+
+
+            else if( (password<5) || (password>10))
+            {
+                document.getElementById("password1").innerHTML="put your password under 5 to 10 digits"+"<br>";
+                return wrong;
+            }
+
+            else if(password!=conpassword)
+            {
+                document.getElementById("password1").innerHTML="OPSS!!!! NOT MATCHING"+"<br>";
+                return wrong;
+            }
+
+
+
+
+
+
+            if(conpassword=="")
+            {
+                document.getElementById("conpassword1").innerHTML= "Don't leave it blank"+"<br>";
+                return wrong;
+            }
+
+        }
+
+
+    </script>
+
+        <style >
+            #sidedone
+            {
+                text-align: center;
+                padding-top: 36px;
+            }
+            strong
+            {
+                color: chartreuse;
+            }
+        </style>
+
+</head>
+<body class="text-white">
+    <div class="container"  style="background-image: url(back.jpg);height: 650px" >
+            <div class="row">
+                <div class="col-sm-12" style="padding-top: 50px">
+
+
+                </div>
+
+                <div class="col-sm-4 m-auto" style="background-color: #cc00ff4a">
+                    <form action="#">
+                            <h1 class="text-primary text-center">SIGN-UP</h1>
+
+
+                                    <label>Name</label>
+
+                                <input id="name"  class="form-control"  onkeydown="return myf(event)">
+                                    <strong id="name1" class="text-black"></strong>
+
+
+
+                                <label>User Name</label>
+
+                                <input id="username" class="form-control">
+                                 <strong id="username1" class="text-black"></strong>
+
+
+
+
+                                <label>Phone.No</label>
+
+                                <input maxlength="10" id="phonenumber"  pattern="[789][0-9]{9}" class="form-control" onkeydown="return phone(event)">
+                            <strong id="phonenumber1" class="text-black"></strong>
+
+
+                                <label>Email</label>
+                                <input id="email" class="form-control" onblur="validateEmail(this);">
+                        <strong id="email1" class="text-black"></strong>
+
+
+                                <label>Password</label>
+                                    <input id="password" class="form-control">
+                                    <strong id="password1" class="text-black"></strong>
+
+                                <label>confirm password</label>
+                                  <input id="conpassword" class="form-control">
+                                <strong id="conpassword1" class="text-black"></strong>
+                                <div  id="sidedone">
+                            <div class="btn btn-danger type=submit" onclick="limit()">SUBMIT</div>
+                                </div>
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+</body>
+</html>
